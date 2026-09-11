@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>상점 받는 방법 추천</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Pretendard', 'Noto Sans KR', sans-serif;
+        }
+
+        body {
+            background-color: #f4f6f9;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            width: 100%;
+            max-width: 500px;
+            padding: 40px 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        p.subtitle {
+            color: #666;
+            font-size: 14px;
+            margin-bottom: 30px;
+        }
+
+        .btn-recommend {
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+            width: 100%;
+        }
+
+        .btn-recommend:hover {
+            background-color: #4338ca;
+            transform: translateY(-2px);
+        }
+
+        .btn-recommend:active {
+            transform: translateY(0);
+        }
+
+        .result-box {
+            margin-top: 30px;
+            padding: 20px;
+            border-radius: 12px;
+            background-color: #f8fafc;
+            border: 2px dashed #cbd5e1;
+            display: none; /* 처음에는 숨김 */
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .result-box.active {
+            display: block;
+        }
+
+        .result-title {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .result-text {
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e293b;
+            word-break: keep-all;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🏆 상점 받는 방법 추천</h1>
+        <p class="subtitle">오늘 상점을 받고 싶다면? 버튼을 눌러보세요!</p>
+
+        <button class="btn-recommend" onclick="getMeritPoint()">상점 받기</button>
+
+        <div class="result-box" id="resultBox">
+            <div class="result-title">💡 오늘의 상점 획득 미션</div>
+            <div class="result-text" id="resultText">버튼을 눌러 추천을 받아보세요!</div>
+        </div>
+    </div>
+
+    <script>
+        // 상점을 받을 수 있는 여러 가지 방법 리스트
+        const meritList = [
+            "🧹 교실(방) 구석구석 깨끗하게 청소하기",
+            "🙋‍♂️ 수업/회의 시간에 적극적으로 질문하고 발표하기",
+            "🤝 도움이 필요한 친구/동료에게 먼저 다가가 돕기",
+            "📖 오늘 할 일이나 숙제를 기한보다 먼저 제출하기",
+            " 인사 잘하기! 선생님/상사에게 밝게 인사하기",
+            "🌱 자발적으로 분리수거 및 쓰레기 줍기",
+            "⏰ 약속 시간이나 시작 시간 5분 전에 미리 정돈하고 기다리기",
+            "✏️ 모범적인 태도로 수업/업무 노트 정리 완벽하게 하기",
+            "🤫 분위기가 어수선할 때 조용히 하고 모범 보이기"
+        ];
+
+        function getMeritPoint() {
+            const resultBox = document.getElementById('resultBox');
+            const resultText = document.getElementById('resultText');
+
+            // 랜덤으로 방법 하나 선택
+            const randomIndex = Math.floor(Math.random() * meritList.length);
+            const selectedMethod = meritList[randomIndex];
+
+            // 애니메이션 효과를 위해 클래스 잠시 제거 후 재적용
+            resultBox.classList.remove('active');
+            
+            setTimeout(() => {
+                resultText.innerText = selectedMethod;
+                resultBox.classList.add('active');
+            }, 50);
+        }
+    </script>
+
+</body>
+</html>
