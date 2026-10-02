@@ -4,26 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>상점 차곡차곡 | 3학년 맞춤 상점 가이드</title>
-  <!-- Pretendard 폰트 불러오기 -->
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
   <style>
-    /* 🎨 파스텔톤 컬러 팔레트 & 변수 설정 */
     :root {
       --bg-color: #F8F9FA;
       --card-bg: #FFFFFF;
       --text-main: #333333;
       --text-sub: #666666;
-      --text-muted: #888888;
-      
-      /* 소프트 파스텔 포인트 컬러 */
       --pastel-pink: #FFD1DC;
       --pastel-pink-sub: #FFF0F3;
       --pastel-blue: #CBE4F9;
       --pastel-blue-hover: #B5D8F7;
-      --pastel-green: #D8F3DC;
       --pastel-purple: #E2D4F9;
-      --pastel-yellow: #FFF1C5;
-      
       --border-color: #EAECEF;
       --shadow-soft: 0 8px 24px rgba(149, 157, 165, 0.08);
       --radius-main: 16px;
@@ -58,7 +50,6 @@
       border: 1px solid var(--border-color);
     }
 
-    /* 헤더 영역 */
     header {
       text-align: center;
       margin-bottom: 28px;
@@ -69,7 +60,6 @@
       font-weight: 700;
       color: #2D3748;
       margin-bottom: 6px;
-      letter-spacing: -0.5px;
     }
 
     header h1 span {
@@ -83,7 +73,6 @@
       color: var(--text-sub);
     }
 
-    /* 상단 알림 및 벌점 계산기 */
     .penalty-card {
       background-color: var(--pastel-pink-sub);
       border: 1px solid #FFCCD5;
@@ -115,7 +104,6 @@
       font-size: 0.88rem;
       font-weight: 600;
       color: #4A5568;
-      white-space: nowrap;
     }
 
     .penalty-input-group input {
@@ -135,27 +123,15 @@
       margin-left: auto;
     }
 
-    /* 입력 폼 섹션 공통 */
     .section-title {
       font-size: 1.05rem;
       font-weight: 700;
       color: #2D3748;
       margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      gap: 6px;
     }
 
     .form-group {
       margin-bottom: 24px;
-    }
-
-    label {
-      display: block;
-      font-size: 0.9rem;
-      font-weight: 600;
-      color: #4A5568;
-      margin-bottom: 8px;
     }
 
     select {
@@ -167,17 +143,9 @@
       font-size: 0.95rem;
       color: var(--text-main);
       outline: none;
-      transition: all 0.2s ease;
       cursor: pointer;
     }
 
-    select:focus {
-      background-color: #FFFFFF;
-      border-color: #A0AEC0;
-      box-shadow: 0 0 0 3px rgba(203, 228, 249, 0.5);
-    }
-
-    /* 6/7교시 선택 스위치 */
     .period-toggle {
       display: flex;
       gap: 8px;
@@ -194,7 +162,6 @@
       font-size: 0.88rem;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.2s;
     }
 
     .period-btn.active {
@@ -203,7 +170,6 @@
       border-color: #D6BCFA;
     }
 
-    /* 시간표 그리드 */
     .timetable-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -231,16 +197,13 @@
       font-weight: 700;
       color: #718096;
       width: 42px;
-      flex-shrink: 0;
     }
 
     .timetable-item select {
       padding: 6px 8px;
       font-size: 0.88rem;
-      border: 1px solid #E2E8F0;
     }
 
-    /* 제출 버튼 */
     .submit-btn {
       width: 100%;
       padding: 16px;
@@ -257,14 +220,8 @@
 
     .submit-btn:hover {
       background-color: var(--pastel-blue-hover);
-      transform: translateY(-1px);
     }
 
-    .submit-btn:active {
-      transform: translateY(0);
-    }
-
-    /* 결과 출력 영역 */
     .result-container {
       display: none;
       margin-top: 32px;
@@ -283,9 +240,6 @@
       font-size: 1.2rem;
       color: #166534;
       margin-bottom: 16px;
-      display: flex;
-      align-items: center;
-      gap: 8px;
     }
 
     .result-box {
@@ -296,16 +250,11 @@
       border: 1px solid #DCFCE7;
     }
 
-    .result-box:last-child {
-      margin-bottom: 0;
-    }
-
     .result-label {
       font-size: 0.82rem;
       font-weight: 700;
       color: #15803D;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
       margin-bottom: 4px;
     }
 
@@ -330,8 +279,8 @@
       margin-left: 6px;
     }
 
-    .badge-high { background-color: #FEF08A; color: #854D0E; }
     .badge-vhigh { background-color: #BBF7D0; color: #166534; }
+    .badge-high { background-color: #FEF08A; color: #854D0E; }
     .badge-normal { background-color: #E0E7FF; color: #3730A3; }
     .badge-low { background-color: #F3F4F6; color: #4B5563; }
   </style>
@@ -339,16 +288,14 @@
 <body>
 
 <div class="app-container">
-  <!-- 헤더 -->
   <header>
     <h1>🌱 <span>상점 차곡차곡</span></h1>
     <p>3학년 전용 소선도 방지 & 맞춤 상점 획득 가이드</p>
   </header>
 
-  <!-- 벌점 현황 카드 -->
   <div class="penalty-card">
     <div class="penalty-info">
-      ⚠️️ 벌점이 <strong>15점 이상</strong>이면 소선도 대상이 됩니다. 미리 상점을 모으세요!
+      ⚠ 벌점이 <strong>15점 이상</strong>이면 소선도 대상이 됩니다. 미리 상점을 모으세요!
     </div>
     <div class="penalty-input-group">
       <label for="currentPenalty">현재 내 벌점:</label>
@@ -357,7 +304,6 @@
     </div>
   </div>
 
-  <!-- 1. 반 선택 -->
   <div class="form-group">
     <div class="section-title">📍 학급 위치 선택</div>
     <select id="myClass">
@@ -374,23 +320,15 @@
     </select>
   </div>
 
-  <!-- 2. 오늘 시간표 설정 -->
   <div class="form-group">
     <div class="section-title">📅 오늘 시간표 입력</div>
-    
-    <!-- 6교시 / 7교시 스위치 -->
     <div class="period-toggle">
       <button class="period-btn active" id="btn6" onclick="setPeriod(6)">6교시 수업일</button>
       <button class="period-btn" id="btn7" onclick="setPeriod(7)">7교시 수업일</button>
     </div>
-
-    <!-- 시간표 그리드 -->
-    <div class="timetable-grid" id="timetableGrid">
-      <!-- 자바스크립트로 자동 생성됨 -->
-    </div>
+    <div class="timetable-grid" id="timetableGrid"></div>
   </div>
 
-  <!-- 3. 방문 희망 시간대 -->
   <div class="form-group">
     <div class="section-title">⏰ 상점 받으러 갈 시간대</div>
     <select id="freeTime">
@@ -400,29 +338,24 @@
     </select>
   </div>
 
-  <!-- 분석 버튼 -->
   <button class="submit-btn" onclick="analyzeBestOption()">최적의 상점 가이드 확인하기 ✨</button>
 
-  <!-- 결과 출력 영역 -->
   <div id="resultContainer" class="result-container">
     <div class="result-card">
       <h2>💡 오늘의 맞춤 상점 공략집</h2>
       
-      <!-- 1. 추천 선생님 -->
       <div class="result-box">
         <div class="result-label">오늘 가장 상점 받기 좋은 선생님</div>
         <div class="result-value" id="resTeacherName">-</div>
         <div class="result-desc" id="resTeacherInfo">-</div>
       </div>
 
-      <!-- 2. 교무실 위치 및 거리 -->
       <div class="result-box">
         <div class="result-label">방문할 교무실 & 동선</div>
         <div class="result-value" id="resOfficeName">-</div>
         <div class="result-desc" id="resDistance">-</div>
       </div>
 
-      <!-- 3. 실전 팁 및 멘트 -->
       <div class="result-box">
         <div class="result-label">추천 심부름 & 공략 멘트</div>
         <div class="result-value" id="resTask">-</div>
@@ -433,34 +366,32 @@
 </div>
 
 <script>
-  // 13개 과목 및 선생님 기본 데이터
   const subjects = ["수학", "과학", "영어", "국어", "체육", "창체", "가정", "기술", "역사", "사회", "스클", "미술", "한문"];
   
+  // 엑셀 데이터를 바탕으로 업데이트된 선생님 데이터베이스
   const teacherDatabase = {
-    "수학": { name: "김수학 쌤", floor: 2, office: "2층 3학년 교무실", freq: "높음", freqScore: 3, task: "수업 후 형성평가지/프린트 수거 및 전달", personality: "수업 후 정리를 잘 돕는 학생을 좋아함" },
-    "과학": { name: "박과학 쌤", floor: 2, office: "2층 3학년 교무실", freq: "매우 높음", freqScore: 4, task: "과학실 교구 정리 및 다음 수업 준비 보조", personality: "실험 기구 정리에 협조적인 학생에게 상점을 잘 주심" },
-    "영어": { name: "이영어 쌤", floor: 2, office: "2층 3학년 교무실", freq: "보통", freqScore: 2, task: "영어 단어장 수거 및 제출 확인 보조", personality: "단어 채점 보조나 영어 질문 방문을 좋아함" },
-    "국어": { name: "최국어 쌤", floor: 4, office: "4층 생활교육부", freq: "보통", freqScore: 2, task: "국어 수행평가 모음집 정리 및 제출 확인", personality: "예의 바르고 글씨체가 바른 학생을 선호함" },
-    "체육": { name: "강체육 쌤", floor: 1, office: "1층 체육안전부", freq: "매우 높음", freqScore: 4, task: "체육 수업 직후 공 및 운동 기구 수거/정리", personality: "기구 정리를 적극적으로 도우면 즉시 상점 부여" },
-    "창체": { name: "윤창체 쌤", floor: 1, office: "1층 대교무실", freq: "높음", freqScore: 3, task: "동아리 활동지 수거 및 유인물 배부 보조", personality: "학급 및 동아리 행사를 도우면 상점을 잘 주심" },
-    "가정": { name: "임가정 쌤", floor: 3, office: "3층 1학년 교무실", freq: "보통", freqScore: 2, task: "실습실 기구 정돈 및 뒷정리 도우미", personality: "실습실 청결 관리와 도구 정리를 잘하는 학생 선호" },
-    "기술": { name: "장기술 쌤", floor: 3, office: "3층 1학년 교무실", freq: "높음", freqScore: 3, task: "실습 재료 운반 및 공구 정리 보조", personality: "기술실 재료 운반이나 공구 정리를 도우면 상점 부여" },
-    "역사": { name: "한역사 쌤", floor: 2, office: "2층 3학년 교무실", freq: "보통", freqScore: 2, task: "역사 학습지 전달 및 판서 정리 지원", personality: "수업 유인물 정리를 꼼꼼하게 하는 학생 선호" },
-    "사회": { name: "송사회 쌤", floor: 2, office: "2층 3학년 교무실", freq: "높음", freqScore: 3, task: "수업 시각자료/지도 수거 및 교무실 전달", personality: "사회 이슈 질문이나 수업 자료 정리를 잘 돕는 학생 선호" },
-    "스클": { name: "오스클 쌤", floor: 1, office: "1층 체육안전부", freq: "매우 높음", freqScore: 4, task: "스포츠클럽 용품 운반 및 출석부 전달", personality: "체육 용품 관리와 인원 점검 도우미를 선호함" },
-    "미술": { name: "신미술 쌤", floor: 1, office: "1층 대교무실", freq: "높음", freqScore: 3, task: "미술실 실습 재료 정리 및 학생 작품 수거", personality: "작품 게시판 부착 및 미술실 정리를 돕는 학생 선호" },
-    "한문": { name: "조한문 쌤", floor: 4, office: "4층 생활교육부", freq: "낮음", freqScore: 1, task: "한문 공책 수거 및 과제 검사 보조", personality: "정숙하고 한자 쓰 과제를 잘 챙기는 학생 선호" }
+    "수학": { name: "김수학 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "높음", freqScore: 3, task: "수업 후 형성평가지/프린트 수거 및 교무실 전달", personality: "수업 후 정리 정돈을 중시하며, 수학 문제 질문을 반가워함" },
+    "과학": { name: "박과학 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "매우 높음", freqScore: 4, task: "과학실 교구 정리 및 다음 수업 준비 보조", personality: "실험 교구 정리에 협조적인 학생에게 상점을 잘 주심" },
+    "영어": { name: "이영어 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "보통", freqScore: 2, task: "영어 단어장 수거 및 제출 확인 보조", personality: "단어 시험지 채점 보조나 영어 질문 방문을 좋아함" },
+    "국어": { name: "최국어 선생님", floor: 4, office: "생활교육부 (4층)", freq: "보통", freqScore: 2, task: "국어 수행평가 모음집 정리 및 제출 확인", personality: "예의 바르고 조용한 태도를 선호, 글씨체가 바른 학생에게 맡김" },
+    "체육": { name: "강체육 선생님", floor: 1, office: "체육안전부 (1층)", freq: "매우 높음", freqScore: 4, task: "체육 수업 직후 공 및 운동 기구 수거/정리", personality: "체육관 및 운동장 기구 정리를 도우면 상점을 즉시 부여함" },
+    "창체": { name: "윤창체 선생님", floor: 1, office: "대교무실 (1층)", freq: "높음", freqScore: 3, task: "동아리 활동지 수거 및 유인물 배부 보조", personality: "동아리활동 및 학급 행사 관련 심부름을 많이 시키심" },
+    "가정": { name: "임가정 선생님", floor: 3, office: "1학년 교무실 (3층)", freq: "보통", freqScore: 2, task: "실습실 기구 정돈 및 뒷정리 도우미", personality: "실습실 청결 관리나 도구 정리를 적극적으로 돕는 학생 선호" },
+    "기술": { name: "장기술 선생님", floor: 3, office: "1학년 교무실 (3층)", freq: "높음", freqScore: 3, task: "실습 재료 운반 및 정리 보조", personality: "기술실 공구 정리나 재료 운반을 돕는 학생을 좋아함" },
+    "역사": { name: "한역사 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "보통", freqScore: 2, task: "역사 학습지 전달 및 판서 정리 지원", personality: "역사 사료 및 학습지 전달, 꼼꼼하게 정리하는 학생 선호" },
+    "사회": { name: "송사회 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "높음", freqScore: 3, task: "수업 시각자료/지도 수거 및 교무실 전달", personality: "뉴스나 사회 이슈 질문에 친절하며 지도/자료 정리를 맡김" },
+    "스클": { name: "오스클 선생님", floor: 1, office: "체육안전부 (1층)", freq: "매우 높음", freqScore: 4, task: "스포츠클럽 용품 운반 및 출석부 전달", personality: "스포츠 클럽 활동용 용품 관리와 인원 점검 도우미 축하" },
+    "미술": { name: "신미술 선생님", floor: 1, office: "대교무실 (1층)", freq: "높음", freqScore: 3, task: "미술실 실습 재료 정리 및 학생 작품 수거", personality: "미술실 준비물 정리, 작품 게시판 부착을 돕는 학생 선호" },
+    "한문": { name: "조한문 선생님", floor: 4, office: "생활교육부 (4층)", freq: "낮음", freqScore: 1, task: "한문 공책 수거 및 과제 검사 보조", personality: "한자 쓰기 과제 확인 및 정숙한 태도를 중요시함" }
   };
 
   let currentMaxPeriod = 6;
 
-  // 초기화 함수
   window.onload = function() {
     renderTimetable(6);
     updatePenaltyStatus();
   };
 
-  // 6교시 / 7교시 스위치
   function setPeriod(num) {
     currentMaxPeriod = num;
     document.getElementById('btn6').classList.toggle('active', num === 6);
@@ -468,12 +399,9 @@
     renderTimetable(num);
   }
 
-  // 시간표 드롭다운 입력창 생성
   function renderTimetable(periods) {
     const grid = document.getElementById('timetableGrid');
     grid.innerHTML = '';
-
-    // 기본 추천 시간표 목록 (샘플)
     const defaultList = ["수학", "영어", "체육", "과학", "국어", "사회", "역사"];
 
     for (let i = 1; i <= periods; i++) {
@@ -500,7 +428,6 @@
     }
   }
 
-  // 벌점 현황 계산기
   function updatePenaltyStatus() {
     const val = parseInt(document.getElementById('currentPenalty').value) || 0;
     const status = document.getElementById('penaltyStatus');
@@ -515,19 +442,16 @@
     }
   }
 
-  // 최적 상점 동선 및 선생님 분석
   function analyzeBestOption() {
     const studentFloor = parseInt(document.getElementById('myClass').value);
     const selectedTime = document.getElementById('freeTime').value;
 
-    // 오늘 시간표에 선택된 과목들 수집
     const todaySubjects = [];
     for (let i = 1; i <= currentMaxPeriod; i++) {
       const sub = document.getElementById(`period_${i}`).value;
       todaySubjects.push(sub);
     }
 
-    // 과목 중 가장 상점 부여 빈도가 높은(freqScore가 높은) 선생님 선별
     let bestSubject = todaySubjects[0];
     let maxScore = -1;
     let minDistance = 99;
@@ -536,7 +460,6 @@
       const t = teacherDatabase[sub];
       const dist = Math.abs(studentFloor - t.floor);
       
-      // 가중치 계산: 상점 부여 빈도 점수 우선, 동일 시 동선(거리) 가까운 순
       if (t.freqScore > maxScore || (t.freqScore === maxScore && dist < minDistance)) {
         maxScore = t.freqScore;
         minDistance = dist;
@@ -547,18 +470,15 @@
     const target = teacherDatabase[bestSubject];
     const distFloor = Math.abs(studentFloor - target.floor);
 
-    // 뱃지 색상 클래스 지정
     let badgeClass = "badge-normal";
     if (target.freq === "매우 높음") badgeClass = "badge-vhigh";
     else if (target.freq === "높음") badgeClass = "badge-high";
     else if (target.freq === "낮음") badgeClass = "badge-low";
 
-    // 결과 출력
     document.getElementById('resTeacherName').innerHTML = 
       `${target.name} (${bestSubject}) <span class="badge ${badgeClass}">상점 빈도: ${target.freq}</span>`;
     
     document.getElementById('resTeacherInfo').innerText = `특징: ${target.personality}`;
-    
     document.getElementById('resOfficeName').innerText = target.office;
     
     if (distFloor === 0) {
@@ -568,11 +488,9 @@
     }
 
     document.getElementById('resTask').innerText = target.task;
-    
     document.getElementById('resScript').innerText = 
       `💬 추천 멘트: "${target.name}! 오늘 ${bestSubject} 수업 관련해서 ${selectedTime}에 제가 도와드릴 심부름이나 정리할 일 있을까요?"`;
 
-    // 결과 창 표시
     document.getElementById('resultContainer').style.display = 'block';
     document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
   }
