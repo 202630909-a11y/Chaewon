@@ -283,6 +283,7 @@
     .badge-high { background-color: #FEF08A; color: #854D0E; }
     .badge-normal { background-color: #E0E7FF; color: #3730A3; }
     .badge-low { background-color: #F3F4F6; color: #4B5563; }
+    .badge-vlow { background-color: #FEE2E2; color: #991B1B; }
   </style>
 </head>
 <body>
@@ -368,21 +369,21 @@
 <script>
   const subjects = ["수학", "과학", "영어", "국어", "체육", "창체", "가정", "기술", "역사", "사회", "스클", "미술", "한문"];
   
-  // 엑셀 데이터를 바탕으로 업데이트된 선생님 데이터베이스
+  // 새로 전달해주신 엑셀 파일 데이터 적용
   const teacherDatabase = {
-    "수학": { name: "김수학 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "높음", freqScore: 3, task: "수업 후 형성평가지/프린트 수거 및 교무실 전달", personality: "수업 후 정리 정돈을 중시하며, 수학 문제 질문을 반가워함" },
-    "과학": { name: "박과학 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "매우 높음", freqScore: 4, task: "과학실 교구 정리 및 다음 수업 준비 보조", personality: "실험 교구 정리에 협조적인 학생에게 상점을 잘 주심" },
-    "영어": { name: "이영어 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "보통", freqScore: 2, task: "영어 단어장 수거 및 제출 확인 보조", personality: "단어 시험지 채점 보조나 영어 질문 방문을 좋아함" },
-    "국어": { name: "최국어 선생님", floor: 4, office: "생활교육부 (4층)", freq: "보통", freqScore: 2, task: "국어 수행평가 모음집 정리 및 제출 확인", personality: "예의 바르고 조용한 태도를 선호, 글씨체가 바른 학생에게 맡김" },
-    "체육": { name: "강체육 선생님", floor: 1, office: "체육안전부 (1층)", freq: "매우 높음", freqScore: 4, task: "체육 수업 직후 공 및 운동 기구 수거/정리", personality: "체육관 및 운동장 기구 정리를 도우면 상점을 즉시 부여함" },
-    "창체": { name: "윤창체 선생님", floor: 1, office: "대교무실 (1층)", freq: "높음", freqScore: 3, task: "동아리 활동지 수거 및 유인물 배부 보조", personality: "동아리활동 및 학급 행사 관련 심부름을 많이 시키심" },
-    "가정": { name: "임가정 선생님", floor: 3, office: "1학년 교무실 (3층)", freq: "보통", freqScore: 2, task: "실습실 기구 정돈 및 뒷정리 도우미", personality: "실습실 청결 관리나 도구 정리를 적극적으로 돕는 학생 선호" },
-    "기술": { name: "장기술 선생님", floor: 3, office: "1학년 교무실 (3층)", freq: "높음", freqScore: 3, task: "실습 재료 운반 및 정리 보조", personality: "기술실 공구 정리나 재료 운반을 돕는 학생을 좋아함" },
-    "역사": { name: "한역사 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "보통", freqScore: 2, task: "역사 학습지 전달 및 판서 정리 지원", personality: "역사 사료 및 학습지 전달, 꼼꼼하게 정리하는 학생 선호" },
-    "사회": { name: "송사회 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "높음", freqScore: 3, task: "수업 시각자료/지도 수거 및 교무실 전달", personality: "뉴스나 사회 이슈 질문에 친절하며 지도/자료 정리를 맡김" },
-    "스클": { name: "오스클 선생님", floor: 1, office: "체육안전부 (1층)", freq: "매우 높음", freqScore: 4, task: "스포츠클럽 용품 운반 및 출석부 전달", personality: "스포츠 클럽 활동용 용품 관리와 인원 점검 도우미 축하" },
-    "미술": { name: "신미술 선생님", floor: 1, office: "대교무실 (1층)", freq: "높음", freqScore: 3, task: "미술실 실습 재료 정리 및 학생 작품 수거", personality: "미술실 준비물 정리, 작품 게시판 부착을 돕는 학생 선호" },
-    "한문": { name: "조한문 선생님", floor: 4, office: "생활교육부 (4층)", freq: "낮음", freqScore: 1, task: "한문 공책 수거 및 과제 검사 보조", personality: "한자 쓰기 과제 확인 및 정숙한 태도를 중요시함" }
+    "수학": { name: "양현호 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "낮음", freqScore: 2, task: "상점을 잘 주시지 않으며, 심부름을 자주 시키시진 않는다.", personality: "수학 문제 질문을 반가워함. 재미있음" },
+    "과학": { name: "이지수 선생님", floor: 3, office: "1학년 교무실 (3층)", freq: "보통", freqScore: 3, task: "심부름 시키실 일 없냐고 물어보면 심부름을 주실 수도 있다.", personality: "나긋한 성격으로 예의바르고 발표를 잘 하는 학생을 좋아함." },
+    "영어": { name: "김민아 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "매우 높음", freqScore: 5, task: "발표를 열심히 해 도장을 모아 상점을 받거나, 물건을 드는 심부름을 하자.", personality: "발표를 잘 하며 예의 바른 학생을 선호함" },
+    "국어": { name: "박지연 선생님", floor: 1, office: "대교무실 (1층)", freq: "보통", freqScore: 3, task: "심부름 시키실 일 없냐고 물어보면 심부름을 주실 수도 있다.", personality: "예의 바르고 조용한 태도를 선호, 글씨체가 바른 학생에게 맡김" },
+    "체육": { name: "조예진 선생님", floor: 1, office: "체육안전부 (1층)", freq: "높음", freqScore: 4, task: "체육 부장을 하거나, 체육 활동을 월등하게 잘하면 상점을 받을 수 있다.", personality: "체육관 및 운동장 기구 정리를 도우면 상점을 즉시 부여함" },
+    "창체": { name: "이지수 선생님", floor: 3, office: "1학년 교무실 (3층)", freq: "보통", freqScore: 3, task: "이 활동에서는 상점을 얻기 힘듦", personality: "나긋한 성격으로 예의바르고 발표를 잘 하는 학생을 좋아함." },
+    "가정": { name: "권이담 선생님", floor: 4, office: "생활교육부 (4층)", freq: "매우 높음", freqScore: 5, task: "복습 퀴즈를 맞출 때마다 상점을 줌.", personality: "시끄럽고 버릇없는 학생을 매우 싫어하며, 모범생을 좋아하심" },
+    "기술": { name: "장민석 선생님", floor: 4, office: "생활교육부 (4층)", freq: "보통", freqScore: 3, task: "발표를 적극적으로 하면 상점을 주시지만, 발표를 할 기회가 많이 없다.", personality: "말을 잘 듣고 조용하며 자신의 일을 잘 하는 학생을 좋아함" },
+    "역사": { name: "이은정 선생님", floor: 1, office: "대교무실 (1층)", freq: "보통", freqScore: 3, task: "역사 활동을 활발히 하거나 발표를 많이 한다.", personality: "발표 잘하고 조용한 학생 선호." },
+    "사회": { name: "이숙경 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "낮음", freqScore: 2, task: "수업 시각자료/지도 수거 및 교무실 전달", personality: "발표를 잘하는 학생을 좋아하며, 조용한 환경을 선호" },
+    "스클": { name: "김스클 선생님", floor: 1, office: "체육안전부 (1층)", freq: "매우 낮음", freqScore: 1, task: "심부름을 잘 시키지만 상점은 없음", personality: "엄하시며 규칙을 중시하는 성격" },
+    "미술": { name: "김윤정 선생님", floor: 2, office: "3학년 교무실 (2층)", freq: "낮음", freqScore: 2, task: "상점을 잘 주시지 않으며, 심부름을 자주 시키시진 않는다.", personality: "엄해 보이지만 친절한 성격으로, 배고프다고 하시면 간식을 주신다. 조용하고 똘똘한 학생을 좋아한다" },
+    "한문": { name: "한상미 선생님", floor: 1, office: "대교무실 (1층)", freq: "낮음", freqScore: 2, task: "상점을 잘 주지 않는다. 발표를 많이 하면 신뢰도를 얻을 수 있다.", personality: "성실한 모습 및 정숙한 태도를 중요시함" }
   };
 
   let currentMaxPeriod = 6;
@@ -474,6 +475,7 @@
     if (target.freq === "매우 높음") badgeClass = "badge-vhigh";
     else if (target.freq === "높음") badgeClass = "badge-high";
     else if (target.freq === "낮음") badgeClass = "badge-low";
+    else if (target.freq === "매우 낮음") badgeClass = "badge-vlow";
 
     document.getElementById('resTeacherName').innerHTML = 
       `${target.name} (${bestSubject}) <span class="badge ${badgeClass}">상점 빈도: ${target.freq}</span>`;
@@ -489,7 +491,7 @@
 
     document.getElementById('resTask').innerText = target.task;
     document.getElementById('resScript').innerText = 
-      `💬 추천 멘트: "${target.name}! 오늘 ${bestSubject} 수업 관련해서 ${selectedTime}에 제가 도와드릴 심부름이나 정리할 일 있을까요?"`;
+      `💬 추천 멘트: "${target.name}! 오늘 ${bestSubject} 수업 관련해서 ${selectedTime}에 제가 도와드릴 심부름이나 도울 일이 있을까요?"`;
 
     document.getElementById('resultContainer').style.display = 'block';
     document.getElementById('resultContainer').scrollIntoView({ behavior: 'smooth' });
